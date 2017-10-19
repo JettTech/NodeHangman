@@ -12,7 +12,7 @@ var Words = function() {
   var wordArrayNew = new WordArray();
   var wordArray = wordArrayNew.wordArrRandom;
   this.guessedWordsArr = [];
-  this.word = wordArray.diff(this.guessedWordsArr);
+  this.word = wordArray.diff(this.guessedWordsArr); //this returns the word as an array IF it has not already been played...
   this.check = function() {
     console.log(this.word); //TO check word,.. and also verify that it has NOT YET BEEN played!
   }

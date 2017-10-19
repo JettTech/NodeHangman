@@ -16,22 +16,23 @@ var GamePlay = function(userGuess, avatar) {
     this.won = 0;
     this.gamesPlayed = 0;
     this.gameStart = function () {
-        if (this.gameSwitch === true && newWord) {
+        if (this.gameSwitch === true) { // add in (&& newWord)?.. if have a != newWord clause...IF rel. in CLI.js
             
-            newWord.toString()
-            console.log("trying...the following word SHOULD BE a string...")
+            console.log(words.check());
+            console.log("trying...the following word SHOULD BE called again inside the gameStart function...")
             console.log(newWord); //Testing...
 
-            letter.defaultDisplay(newWord);// !!!!!!!!!!! this does NOT DISPLAY...
-            
-            if(userGuess) {
-                this.gameOn(newWord); // !!///THIS NEEDS TO BE reconfigured.
-            };
+            letter.letterGame(userGuess, newWord, this.guessesLeft, this.lettersLeft);// !!!!!!!!!!! this does NOT DISPLAY as appropirate...
+            // if(userGuess) {
+            //     this.gameOn(newWord); // !!///THIS NEEDS TO BE reconfigured.
+            // };
         }
         if (this.gameSwitch === false) {
             console.log("Let's begin!");
             this.gameSwitch = true;
             newWord;
+
+            letter.defaultDisplay(newWord);// !!!!!!!!!!! this does NOT DISPLAY as appropriate...
             this.gameStart(newWord);
         }
     };

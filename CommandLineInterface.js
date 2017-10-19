@@ -37,12 +37,12 @@ function readStats() {
 
 ///This is for the PLAY HANGMAN Function: /////
 function playHangman(answers) {
-	console.log("trying... playing...");
+	console.log("starting the ...");
 
     var userGuess = answers.userGuess;
     var gamePlay = new GamePlay(userGuess, answers.avatar); //!!!!!!!!!!! ADD A CALLBACK?????? !!!!!!!!!!!!!!!!!!!!
     
-    console.log(userGuess); //testing out...
+    console.log(userGuess); //testing out letter chosen...
 
     gamePlay.gameStart();
 
