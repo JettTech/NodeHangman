@@ -46,17 +46,15 @@ var LetterFunc = function (guess, randWord, guessesLeft, lettersLeft) {
 		            // if (guess === randWord[0][j]) { // VERIFY THAT THE WORD WILL UPDATE CORRETLY IF THERE ARE MULITPLE of the same CORRECT LETTER choice in/from the userGuess.
 		            //     this.defaultDisplay[j] = randWord[0][j]; //The 'defaultDisplay' and 'userGuess' letter match up through the reference to the mathcing index/value.
 		                
-		            if (randWord.includes(guess)){    /// newWord.includes(userGuess) in GamePlay.js file; 
+		            if (randWord.includes(guess) === true){    /// newWord.includes(userGuess) in GamePlay.js file; 
 		           		for (var letter in randWord) {
 		           			if(letter === guess){
 		           				this.defaultDisplay[letter] === randWord[letter];
 		           				console.log("Guess check against word func;");
+		           				console.log("Good play!");
 		           			}        			
 		           		}
-		           		console.log("write the MAP function");  //...MAP OUT WHERE GUESS === RandWord //
-
-		                lettersLeft--;
-		                console.log("Good play!");
+		                lettersLeft--;	                
 		            } 
 		            else {
 		                console.log("You missed the mark, but practice makes perfect.\nGuess again!");

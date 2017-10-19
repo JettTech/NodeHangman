@@ -37,53 +37,54 @@ function readStats() {
 
 ///This is for the PLAY HANGMAN Function: /////
 function playHangman(answers) {
-	console.log("starting the playHangman game in CLI.js...");
-	
+	console.log("starting the playHangman game in CLI.js...");	
 	// var gamePlay = new GamePlay(); //Does this need to be accessible for the whole playHangman function?
     var userGuess = answers.userGuess;
-    
     console.log(userGuess); //testing out letter chosen...
-    if (userGuess) {
+
+    if (userGuess && userGuess != null) {
+    	console.log("I'm in the first 'IF' choice...")
     	userGuess = answers.userGuess;
     	var gamePlay = new GamePlay();
 
     	gamePlay.gameSwitch = true;
     	gamePlay.gameOn(userGuess);
+
+	    if (!gamePlay.guessesLeft || !gamePlay.lettersLeft) {
+	        console.log("I'm at the no guess/no letters -left if case in CLI, INDSIDE the first IF choice...")
+	        gamePlay.done();
+
+	    	if (gamePlay.done) {
+	        	inquirer.prompt({
+	            	name: 'playAgain',
+	            	type: 'confirm',
+	            	message: 'Ready to play again? Practice makes perfect!'
+	        	}).then(function(answers) {
+	            	if (answers.playAgain === true) {
+	            		var userGuess = null; //can you assign a "null" value?
+	                	playHangman();
+	            	}
+	            	else if (answers.playAgain != true){
+	            		return console.log("Thanks for playing. Let us know when you're ready to build up your skills more!");
+	            	//should totally exits out of game
+	            	}
+	       		});
+	    	};
+	    }
+	    else {
+	    	console.log("ELSE...")
+	    	inquirer.prompt({
+			      name: 'userGuess',
+			      message: 'Press a letter to place your bet.'
+			    }).then(playHangman);
+	    };
     }
     else {
     	var gamePlay = new GamePlay();
+    	console.log("I'm in the first 'ELSE' choice...")
     	gamePlay.gameSwitch = false;
     	gamePlay.gameStart(); // gamePlay(userGuess, answers.avatar); //!!!!!!!!!!! ADD A CALLBACK?????? !!!!!!!!!!!!!!!!!!!!  
-    }; //need a semicolon here?    
-   
-    if (!gamePlay.guessesLeft || !gamePlay.lettersLeft) {
-        gamePlay.done();
-
-    	if (gamePlay.done) {
-        	inquirer.prompt({
-            	name: 'playAgain',
-            	type: 'confirm',
-            	message: 'Ready to play again? Practice makes perfect!'
-        	}).then(function(answers) {
-            	if (answers.playAgain === true) {
-                	playHangman();
-            	}
-            	else if (answers.playAgain != true){
-            		console.log("Thanks for playing. Let us know when you're ready to build up your skills more!");
-            		return;	
-            	}
-       		});
-    	};
-    }
-    else {
-   		inquirer.prompt({
-           	name: 'userGuess',
-            message: 'Press a letter to place your bet'
-       	}).then(function(answers) {	
-        	gamePlay.gameOn(answers.userGuess);
-        });
-        playHangman()
-    };
+    };   
 };
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -104,7 +105,6 @@ function promptCallback(answers) {
 					console.log("Plase type in a valid password.");
 				}
 			}
-
 		});
 	}
 	else {
