@@ -133,9 +133,7 @@ function promptCallback(answers) {
 	           //////////////////////////////////// initializing of game  ///////////////////////////////////////////
 	            var gamePlay = new GamePlay();
 	            gamePlay.gameStart();
-	            // gamePlay.gameSwitch = true;
-
-
+	     
 	            ////////////////////////////////////  STARTING THE GAME  /////////////////////////////////////////////
 		       	inquirer.prompt({
 			      name: 'userGuess',
