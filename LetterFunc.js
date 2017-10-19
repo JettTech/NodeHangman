@@ -7,20 +7,26 @@ var LetterFunc = function (guess, randWord, guessesLeft, lettersLeft) {
 
 		console.log("LetterFunc is being called, and trying to 'defaultDisplay' the word.")
 		var defaultDisplayArr = [];
-
 	    for (var i = 0; i < randWord.length; i++) {
 	        if (randWord[i] === " ") {
 	            defaultDisplayArr.push(" ");
+	            defaultDisplayArr.join('');
+	            console.log(defaultDisplayArr);
 	            // console.log(" ");
 	        } else if (randWord[i] === "'") {
 	            defaultDisplayArr.push("'");
+	            defaultDisplayArr.join('')
+	            console.log(defaultDisplayArr);
 	            // console.log("'");
 	        } else {
-	        	defaultDisplayArr.push("_")
+	        	defaultDisplayArr.push("_");
+	        	defaultDisplayArr.join('')
+	        	console.log(defaultDisplayArr);
 	            // console.log("_");
 	        }
+	        // console.log(defaultDisplayArr.join(''));
 	    }
-	   	defaultDisplayArr.join('');
+	   	
 	   	console.log("This should be the defaultDisplay joined version: " + defaultDisplayArr);
 	};
 	this.letterGame = function(guess, randWord, guessesLeft, lettersLeft) {
@@ -43,7 +49,7 @@ var LetterFunc = function (guess, randWord, guessesLeft, lettersLeft) {
 		            if (randWord.includes(guess)){    /// newWord.includes(userGuess) in GamePlay.js file; 
 		           		//MAP OUT WHERE GUESS === RandWord
 		           		console.log("write the MAP function");
-		           		
+
 		                lettersLeft--;
 		                console.log("Good play!");
 		            } 

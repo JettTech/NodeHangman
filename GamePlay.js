@@ -16,10 +16,10 @@ var GamePlay = function(userGuess, avatar) {
     this.won = 0;
     this.gamesPlayed = 0;
     this.gameStart = function () {
-        if (this.gameSwitch === true) { // add in (&& newWord)?.. if have a != newWord clause...IF rel. in CLI.js
+        if (this.gameSwitch === true && userGuess) { // add in (&& newWord)?.. if have a != newWord clause...IF rel. in CLI.js
             
-            console.log(words.check());
-            console.log("trying...the following word SHOULD BE called again inside the gameStart function...")
+            // console.log(words.check());
+            console.log("trying...the following word is the randword/newWord inside the gameStart function...")
             console.log(newWord); //Testing...
 
             letter.letterGame(userGuess, newWord, this.guessesLeft, this.lettersLeft);// !!!!!!!!!!! this does NOT DISPLAY as appropirate...
