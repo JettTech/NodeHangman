@@ -38,13 +38,24 @@ function readStats() {
 ///This is for the PLAY HANGMAN Function: /////
 function playHangman(answers) {
 	console.log("starting the playHangman game in CLI.js...");
-
+	
+	// var gamePlay = new GamePlay(); //Does this need to be accessible for the whole playHangman function?
     var userGuess = answers.userGuess;
-    var gamePlay = new GamePlay(userGuess, answers.avatar); //!!!!!!!!!!! ADD A CALLBACK?????? !!!!!!!!!!!!!!!!!!!!  
+    
     console.log(userGuess); //testing out letter chosen...
+    if (userGuess) {
+    	userGuess = answers.userGuess;
+    	var gamePlay = new GamePlay();
 
-    gamePlay.gameStart();
-
+    	gamePlay.gameSwitch = true;
+    	gamePlay.gameOn(userGuess);
+    }
+    else {
+    	var gamePlay = new GamePlay();
+    	gamePlay.gameSwitch = false;
+    	gamePlay.gameStart(); // gamePlay(userGuess, answers.avatar); //!!!!!!!!!!! ADD A CALLBACK?????? !!!!!!!!!!!!!!!!!!!!  
+    }; //need a semicolon here?    
+   
     if (!gamePlay.guessesLeft || !gamePlay.lettersLeft) {
         gamePlay.done();
 
@@ -69,7 +80,7 @@ function playHangman(answers) {
            	name: 'userGuess',
             message: 'Press a letter to place your bet'
        	}).then(function(answers) {	
-        	gamePlay.gameOn();
+        	gamePlay.gameOn(answers.userGuess);
         });
         playHangman()
     };
@@ -122,6 +133,8 @@ function promptCallback(answers) {
 	           //////////////////////////////////// initializing of game  ///////////////////////////////////////////
 	            var gamePlay = new GamePlay();
 	            gamePlay.gameStart();
+	            // gamePlay.gameSwitch = true;
+
 
 	            ////////////////////////////////////  STARTING THE GAME  /////////////////////////////////////////////
 		       	inquirer.prompt({

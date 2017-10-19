@@ -23,6 +23,7 @@ var GamePlay = function(userGuess, avatar) {
             console.log(newWord); //Testing...
 
             letter.letterGame(userGuess, newWord, this.guessesLeft, this.lettersLeft);// !!!!!!!!!!! this does NOT DISPLAY as appropirate...
+            gameOn() 
             // if(userGuess) {
             //     this.gameOn(newWord); // !!///THIS NEEDS TO BE reconfigured.
             // };
@@ -31,12 +32,13 @@ var GamePlay = function(userGuess, avatar) {
             console.log("Let's begin!");
             this.gameSwitch = true;
             newWord;
+            console.log(newWord);
 
             letter.defaultDisplay(newWord);// !!!!!!!!!!! this does NOT DISPLAY as appropriate...
             this.gameStart(newWord);
         }
     };
-    this.gameOn = function(newWord) {
+    this.gameOn = function(userGuess) { //newWord need to be included as well??
         letter.letterGame (userGuess, newWord, this.guessesLeft, this.lettersLeft);    // !! This creates an ERROR.. newWord is NOT being passed correctly into the words flie, as the "randword";        
     };  //DO WE NEED TO HAVE SEMI-COLONS???
     this.done = function() {

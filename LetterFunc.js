@@ -10,17 +10,17 @@ var LetterFunc = function (guess, randWord, guessesLeft, lettersLeft) {
 	    for (var i = 0; i < randWord.length; i++) {
 	        if (randWord[i] === " ") {
 	            defaultDisplayArr.push(" ");
-	            defaultDisplayArr.join('');
+	            // defaultDisplayArr.join('');
 	            console.log(defaultDisplayArr);
 	            // console.log(" ");
 	        } else if (randWord[i] === "'") {
 	            defaultDisplayArr.push("'");
-	            defaultDisplayArr.join('')
+	            // defaultDisplayArr.join('')
 	            console.log(defaultDisplayArr);
 	            // console.log("'");
 	        } else {
 	        	defaultDisplayArr.push("_");
-	        	defaultDisplayArr.join('')
+	        	// defaultDisplayArr.join('')
 	        	console.log(defaultDisplayArr);
 	            // console.log("_");
 	        }
@@ -47,8 +47,13 @@ var LetterFunc = function (guess, randWord, guessesLeft, lettersLeft) {
 		            //     this.defaultDisplay[j] = randWord[0][j]; //The 'defaultDisplay' and 'userGuess' letter match up through the reference to the mathcing index/value.
 		                
 		            if (randWord.includes(guess)){    /// newWord.includes(userGuess) in GamePlay.js file; 
-		           		//MAP OUT WHERE GUESS === RandWord
-		           		console.log("write the MAP function");
+		           		for (var letter in randWord) {
+		           			if(letter === guess){
+		           				this.defaultDisplay[letter] === randWord[letter];
+		           				console.log("Guess check against word func;");
+		           			}        			
+		           		}
+		           		console.log("write the MAP function");  //...MAP OUT WHERE GUESS === RandWord //
 
 		                lettersLeft--;
 		                console.log("Good play!");
@@ -57,11 +62,12 @@ var LetterFunc = function (guess, randWord, guessesLeft, lettersLeft) {
 		                console.log("You missed the mark, but practice makes perfect.\nGuess again!");
 		            }
 		        // };
-		    
-		    } else {
-		        console.log("Please choose a valid English letter.");
 		    }
-		};
+		}
+		if (alphabetFull.includes(guess) === false) {
+		    console.log("Please choose a valid English letter.");
+		}
+
 		guessesLeft--;
 	};
 };
